@@ -315,4 +315,5 @@ call group7\build.bat 2021.1.17f1
 call group7\build.bat 2021.1.18f1
 call group7\build.bat 2021.1.19f1
 call group7\build.bat 2021.2.0b4
+call group8\build.bat 2022.3.7f1
 pause

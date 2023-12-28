@@ -43,7 +43,7 @@ def split_class_structure(version, contents):
             else:
                 cctor_thread_padding = False
             break
-        if '*' in ftype or ftype in ('size_t', 'Il2CppMetadataTypeHandle'):
+        if '*' in ftype or ftype in ('size_t', 'Il2CppMetadataTypeHandle', 'Il2CppGCHandle'): #Il2CppGCHandle is just void*
             size32 += 4
         elif ftype in ('uint32_t', 'int32_t', 'GenericContainerIndex', 'CustomAttributeIndex'):
             size32 += 4
@@ -195,6 +195,7 @@ for dir in glob.glob('../group*/il2cpp-*'):
 
     # We preprocess the file using dummy (empty) standard library headers
     # so that we only see the Il2Cpp-specific stuff.
+    print(args)
     header = subprocess.check_output(args, stderr=subprocess.DEVNULL).decode()
     header = process_header(version, header)
     open('%s.h' % version, 'w').write(header)
